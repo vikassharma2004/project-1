@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        .navbar {
+            height: 5rem;
+        }
+
+        .fa-compass {
+            color: #fe424d;
+            font-size: 2rem;
+        }
+
+        .nav-link {
+            color: rgb(34, 34, 34) !important;
+           
+
+          
+        }
+       
+        @media screen and (max-width: 991px) {
+    /* Adjust background color for nav-link on medium-sized devices */
+    .nav-link {
+       z-index: 1 !important;
+    float: right;
+ 
+      background-color: aliceblue;
+     
+    }
+}
+    
+
+        .f-info-links a {
+            text-decoration: none;
+            color: #222222;
+        }
+
+        .f-info-links a:hover {
+            text-decoration: underline;
+
+        }
+
+        .f-info {
+            text-align: center;
+            height: 8rem;
+            background-color: #201f1f4e;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: space-evenly;
+        }
+
+        .f-info-socials i {
+            margin-right: 2rem;
+            font-size: 1.2rem;
+        }
+
+
+        .f-info-links,
+        .f-info-socials,
+        .f-info-brand {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /*  cards */
+        .card {
+            border: none !important;
+            margin-bottom: 2rem;
+        }
+
+        .card-img-top {
+            border-radius: 1rem !important;
+            width: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .card-body {
+            padding: 0 !important;
+        }
+
+        .card-text {
+            font-weight: 400 !important;
+        }
+
+        .listing-link {
+            text-decoration: none;
+        }
+
+        .card-img-overlay {
+            opacity: 0;
+        }
+
+        .card-img-overlay:hover {
+            opacity: 0.2;
+            background-color: white;
+        }
+
+        .edit-btn {
+            background-color: #fe424d !important;
+            border: none;
+            
+        }
+    </style>
+</head>
+<% layout("./layouts/boilerplate")%>
+
+    <body>
+        <div class="row mt-3">
+            <div class="col-8 offset-2">
+                <h3>Edit Listing</h3>
+                <form action="/listings/<%=listing._id%>?_method=put" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label"><b>title%></label>
+                        <input name="listing[title]" type="text" value="<%=listing.title%>" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label"><B>description</B></label>
+                        <textarea name="listing[description]" class="form-control" required><%= listing.description %></textarea>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <h6><b>Original listing Image</b></h6>
+                        <img src="<%=originalimageurl%>" class="card-img-top" alt="...">
+                        </div>
+                     
+                    <div class="mb-3" >
+                        <label for="image" class="form-label"> <B>New image</B></label>
+                        <input name="listing[image]" type="file"  class="form-control"  >
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="price" class="form-label"><B>price</B></label>
+                        <input name="listing[price]" type="number"   required  value="<%=listing.price%>" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label"><B>country</B></label>
+                        <input name="listing[country]" type="text"  required value="<%=listing.country%>" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label"><B>location</B></label>
+                        <input name="listing[location]" type="text"  required  value="<%=listing.location%>" class="form-control">
+                    </div>
+
+                    <button class="edit-btn btn btn-dark mt-3 mb-3">save edit
+
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>
