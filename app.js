@@ -12,7 +12,7 @@ const reviewRouter = require("./Routes/reviews.js");
 const userRouter=require("./Routes/user.js")
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
-const Listing = require("./models/listing.js");
+
 const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./models/reviews.js");
 const flash = require("connect-flash");
